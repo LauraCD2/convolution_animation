@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Convolución interactiva • p5.js</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="stage-row">
+        <div class="stage-box in">
+          <span class="stage-label">Entrada</span>
+          <div id="slot-in"></div>
+        </div>
+        <div class="stage-box out">
+          <span class="stage-label">Salida</span>
+          <div id="slot-out"></div>
+        </div>
+      </div>
+      <div id="gui">
+        <h3>Convolución interactiva</h3>
+
+        <div class="row">
+          <label for="preset">Kernel preset</label>
+          <select id="preset"></select>
+          <span class="val"></span>
+        </div>
+
+        <div class="row">
+          <label for="kSize">Tamaño k</label>
+          <input id="kSize" type="range" min="1" max="9" step="2" value="3" />
+          <span class="val">3</span>
+        </div>
+
+        <div class="row">
+          <label for="stride">Stride</label>
+          <input id="stride" type="range" min="1" max="8" step="1" value="1" />
+          <span class="val">1</span>
+        </div>
+
+        <div class="row">
+          <label for="padding">Padding</label>
+          <select id="padding">
+            <option>valid</option>
+            <option>same</option>
+          </select>
+          <span class="val"></span>
+        </div>
+
+        <div class="row">
+          <label for="speed">Velocidad</label>
+          <input id="speed" type="range" min="1" max="40" step="1" value="6" />
+          <span class="val">6</span>
+        </div>
+
+        <div class="row">
+          <label for="norm">Normalización</label>
+          <select id="norm">
+            <option>clip 0–255</option>
+            <option>map [-M,M]→[0,255]</option>
+            <option>|valor|</option>
+          </select>
+          <span class="val"></span>
+        </div>
+
+        <div class="row row-buttons">
+          <button id="play">Play/Pause</button>
+          <button id="reset">Reiniciar</button>
+        </div>
+
+        <details open>
+          <summary>Editar kernel k×k</summary>
+          <div id="kernelGrid"></div>
+        </details>
+
+        <p class="hint">
+          Tamaño salida: floor((n − k + 2p)/s) + 1
+        </p>
+      </div>
+    </div>
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="sketch.js"></script>
+  </body>
+</html>
